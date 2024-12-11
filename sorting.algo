@@ -1,0 +1,21 @@
+ALGORITHM sorting
+VAR
+    arr : ARRAY_OF INTEGER;  // Input array to be sorted
+    i, j : INTEGER;         // Loop variables
+    key : INTEGER;          // Temporary storage for current element
+BEGIN
+    // Start from the second element (index 1) and sort
+    FOR (i : INTEGER = 1; i < arr.length(); i++) DO
+        key = arr[i];
+        j = i - 1;
+
+        // Shift elements of the sorted part of the array that are greater than 'key'
+        WHILE (j >= 0 AND arr[j] > key) DO
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        END_WHILE
+
+        // Place 'key' in its correct position
+        arr[j + 1] = key;
+    END_FOR
+END
